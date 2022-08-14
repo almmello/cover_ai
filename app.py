@@ -1,15 +1,43 @@
 import os
 import openai as ai
 import json
-import streamlit as st 
+import streamlit as st
+
+from google.cloud import translate
+from os import environ
 
 from dotenv import load_dotenv
+
+
+
 load_dotenv()  # take environment variables from .env.
 
-print("** Loading API Key")
+# set gcloud
+project_id = environ.get("PROJECT_ID", "")
+assert project_id
+parent = f"projects/{project_id}"
+
+
+
+
+def text_translate (sample_text, target_language):
+    client = translate.TranslationServiceClient()
+    response = client.translate_text(
+        contents=[sample_text],
+        target_language_code=target_language,
+        mime_type="text/plain", 
+        parent=parent,
+    )
+
+    for translation in response.translations:
+        return translation.translated_text
+
+
+
+#print("** Loading API Key")
 ai.api_key = os.getenv("OPENAI_API_KEY")
 
-st.title("Goalmoon Cover Letter Generator")
+st.title("Goalmoon AI")
 st.markdown("# Cover Letter Generator")
 st.sidebar.markdown("# Cover Letter Generator")
 
@@ -90,13 +118,15 @@ if submit_button:
 
 
     text = response['choices'][0]['text']
-    print("Prompt:", prompt)
-    print("Response:", text)
+    #print("Prompt:", prompt)
+    #print("Response:", text)
+    translated_text = text_translate(text, "pt")
 
-    st.subheader("Cover Letter Prompt")
-    st.write(prompt)
+
+    #st.subheader("Cover Letter Prompt")
+    #st.write(prompt)
     st.subheader("Auto-Generated Cover Letter")
-    st.write(text)
+    st.write(translated_text)
     st.download_button(label='Download Cover Letter', file_name='cover_letter.txt', data=text)
 
     # print("Other results:", response)
