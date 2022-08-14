@@ -3,11 +3,15 @@ import openai as ai
 import json
 import streamlit as st
 
+import gettext
+
+
 from google.cloud import translate
 from os import environ
 
 from dotenv import load_dotenv
 
+_ = gettext.gettext
 
 
 load_dotenv()  # take environment variables from .env.
@@ -32,29 +36,37 @@ def text_translate (sample_text, target_language):
     for translation in response.translations:
         return translation.translated_text
 
-
+language = st.sidebar.selectbox('', ['en', 'pt'])
+try:
+  localizator = gettext.translation('base', localedir='locales', languages=[language])
+  localizator.install()
+  _ = localizator.gettext 
+except:
+    pass
 
 #print("** Loading API Key")
 ai.api_key = os.getenv("OPENAI_API_KEY")
 
 st.title("Goalmoon AI")
-st.markdown("# Cover Letter Generator")
-st.sidebar.markdown("# Cover Letter Generator")
+
+
+st.markdown(_("# Cover Letter Generator"))
+st.sidebar.markdown(_("# Cover Letter Generator"))
 
 with st.sidebar: 
     model_used = st.selectbox(
-     'GPT-3 Model',
+     _('GPT-3 Model'),
     #  ('DaVinci', 'Curie', 'Babbage', 'Ada'))
     ('text-davinci-002', 'text-curie-001', 'text-babbage-001', 'text-ada-001'))
 
 
     if model_used == 'text-davinci-002': 
-        st.markdown("""[Davinci](https://beta.openai.com/docs/models/davinci) is the most capable model family and can perform any task the other 
+        st.markdown(_("""[Davinci](https://beta.openai.com/docs/models/davinci) is the most capable model family and can perform any task the other 
         models can perform and often with less instruction. For applications requiring a lot of 
         understanding of the content, like summarization for a specific audience and creative content
          generation, Davinci is going to produce the best results. These increased 
          capabilities require more compute resources, so Davinci costs more per API call and is not as fast as the other models.
-        """)
+        """))
         # st.markdown("""
         # Good at: 
         #     * Complex intent
@@ -62,42 +74,42 @@ with st.sidebar:
         #     * summarization for audience
         # """)
     elif model_used == 'text-curie-001': 
-        st.markdown("""[Curie](https://beta.openai.com/docs/models/curie) is extremely powerful, yet very fast. While Davinci is stronger when it 
+        st.markdown(_("""[Curie](https://beta.openai.com/docs/models/curie) is extremely powerful, yet very fast. While Davinci is stronger when it 
         comes to analyzing complicated text, Curie is quite capable for many nuanced tasks like sentiment 
         classification and summarization. Curie is also quite good at answering questions and performing 
         Q&A and as a general service chatbot.
-        """)
+        """))
     elif model_used == 'text-babbage-001': 
-        st.markdown("""[Babbage](https://beta.openai.com/docs/models/babbage) can perform straightforward tasks like simple classification. It’s also quite 
+        st.markdown(_("""[Babbage](https://beta.openai.com/docs/models/babbage) can perform straightforward tasks like simple classification. It’s also quite 
         capable when it comes to Semantic Search ranking how well documents match up with search queries.
-        """)
+        """))
     else: 
-        st.markdown("""[Ada](https://beta.openai.com/docs/models/ada) is usually the fastest model and can perform tasks like parsing text, address 
+        st.markdown(_("""[Ada](https://beta.openai.com/docs/models/ada) is usually the fastest model and can perform tasks like parsing text, address 
         correction and certain kinds of classification tasks that don’t require too much nuance. 
         da’s performance can often be improved by providing more context.
-        """)
-    st.markdown("**Note:** Model descriptions are taken from the [OpenAI](https://beta.openai.com/docs) website")
+        """))
+    st.markdown(_("**Note:** Model descriptions are taken from the [OpenAI](https://beta.openai.com/docs) website"))
 
-    max_tokens = st.text_input("Maximum number of tokens:", "1949")
-    st.markdown("**Important Note:** Unless the model you're using is Davinci, then please keep the total max num of tokens < 1950 to keep the model from breaking. If you're using Davinci, please keep max tokens < 3000.")
+    max_tokens = st.text_input(_("Maximum number of tokens:"), "1949")
+    st.markdown(_("**Important Note:** Unless the model you're using is Davinci, then please keep the total max num of tokens < 1950 to keep the model from breaking. If you're using Davinci, please keep max tokens < 3000."))
 
-    st.subheader("Additional Toggles:")
-    st.write("Only change these if you want to add specific parameter information to the model!")
-    temperature = st.text_input("Temperature: ", "0.99")
-    top_p = st.text_input("Top P: ", "1")
+    st.subheader(_("Additional Toggles:"))
+    st.write(_("Only change these if you want to add specific parameter information to the model!"))
+    temperature = st.text_input(_("Temperature: "), "0.99")
+    top_p = st.text_input(_("Top P: "), "1")
 
 
 with st.form(key='my_form_to_submit'):    
-    company_name = st.text_input("Company Name: ", "Microsoft  Brazil")
-    role = st.text_input("What role are you applying for? ", "Product Manager")
-    contact_person = st.text_input("Who are you emailing? ", "Technical Hiring Manager")
-    your_name = st.text_input("What is your name? ", "Alexandre")
-    personal_exp = st.text_input("I have experience in...", "natural language processing, fraud detection, statistical modeling, and machine learning algorithms. ")
-    job_desc = st.text_input("Job Description...", "A real challenge with a lot of ambiguity and plenty of play space for your passion and creativity" )
-    passion = st.text_input("I am passionate about...", "solving problems at the intersection of technology and social good.")
+    company_name = st.text_input(_("Company Name: "), "Microsoft  Brazil")
+    role = st.text_input(_("What role are you applying for? "), "Product Manager")
+    contact_person = st.text_input(_("Who are you emailing? "), "Technical Hiring Manager")
+    your_name = st.text_input(_("What is your name? "), "Alexandre")
+    personal_exp = st.text_input(_("I have experience in..."), "natural language processing, fraud detection, statistical modeling, and machine learning algorithms. ")
+    job_desc = st.text_input(_("Job Description..."), "A real challenge with a lot of ambiguity and plenty of play space for your passion and creativity" )
+    passion = st.text_input(_("I am passionate about..."), "solving problems at the intersection of technology and social good.")
     # job_specific = st.text_input("What do you like about this job? (Please keep this brief, one sentence only.) ")
     # specific_fit = st.text_input("Why do you think your experience is a good fit for this role? (Please keep this brief, one sentence only.) ")
-    submit_button = st.form_submit_button(label='Submit')
+    submit_button = st.form_submit_button(label=_('Submit'))
 
 prompt = ("Write a cover letter to " + contact_person + " from " + your_name +" for a " + role + " job at " + company_name +"." + " I have experience in " +personal_exp + " the job description is " + job_desc + " I am passionate about "+ passion)
 
@@ -125,11 +137,13 @@ if submit_button:
 
     #st.subheader("Cover Letter Prompt")
     #st.write(prompt)
-    st.subheader("Auto-Generated Cover Letter")
+    st.subheader(_("Auto-Generated Cover Letter"))
     st.write(translated_text)
-    st.download_button(label='Download Cover Letter', file_name='cover_letter.txt', data=text)
+    st.download_button(label=_('Download Cover Letter'), file_name='cover_letter.txt', data=text)
 
     # print("Other results:", response)
 
     with open('cover_letters.txt', 'a') as f:
         f.write(text)
+
+

@@ -141,3 +141,12 @@ I would be excited to bring my skills and experience to Microsoft Brazil as a Pr
 
 Sincerely,
  Alexandre
+
+Hi Technical Hiring Manager,
+
+My name is Alexandre and I am interested in the Product Manager job at Microsoft Brazil. I have experience in natural language processing, fraud detection, statistical modeling, and machine learning algorithms. I believe I would be a great fit for this job because I am passionate about solving problems at the intersection of technology and social good.
+
+Thank you for your time and consideration.
+
+Sincerely,
+Alexandre

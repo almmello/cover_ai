@@ -1,0 +1,147 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-08-14 17:29-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: app.py:47 app.py:48
+msgid "# Cover Letter Generator"
+msgstr "# Gerador de Carta de Apresentação"
+
+#: app.py:52
+msgid "GPT-3 Model"
+msgstr "Modelo de Inteligência Artificial"
+
+#: app.py:58
+msgid ""
+"[Davinci](https://beta.openai.com/docs/models/davinci) is the most capable "
+"model family and can perform any task the other \n"
+"        models can perform and often with less instruction. For applications "
+"requiring a lot of \n"
+"        understanding of the content, like summarization for a specific "
+"audience and creative content\n"
+"         generation, Davinci is going to produce the best results. These "
+"increased \n"
+"         capabilities require more compute resources, so Davinci costs more "
+"per API call and is not as fast as the other models.\n"
+"        "
+msgstr "Temp"
+
+#: app.py:71
+msgid ""
+"[Curie](https://beta.openai.com/docs/models/curie) is extremely powerful, "
+"yet very fast. While Davinci is stronger when it \n"
+"        comes to analyzing complicated text, Curie is quite capable for many "
+"nuanced tasks like sentiment \n"
+"        classification and summarization. Curie is also quite good at "
+"answering questions and performing \n"
+"        Q&A and as a general service chatbot.\n"
+"        "
+msgstr "Temp"
+
+#: app.py:77
+msgid ""
+"[Babbage](https://beta.openai.com/docs/models/babbage) can perform "
+"straightforward tasks like simple classification. It’s also quite \n"
+"        capable when it comes to Semantic Search ranking how well documents "
+"match up with search queries.\n"
+"        "
+msgstr "Temp"
+
+#: app.py:81
+msgid ""
+"[Ada](https://beta.openai.com/docs/models/ada) is usually the fastest model "
+"and can perform tasks like parsing text, address \n"
+"        correction and certain kinds of classification tasks that don’t "
+"require too much nuance. \n"
+"        da’s performance can often be improved by providing more context.\n"
+"        "
+msgstr "Temp"
+
+#: app.py:85
+msgid ""
+"**Note:** Model descriptions are taken from the [OpenAI](https://beta.openai."
+"com/docs) website"
+msgstr "Temp"
+
+#: app.py:87
+msgid "Maximum number of tokens:"
+msgstr "Número máximo de Tokens:"
+
+#: app.py:88
+msgid ""
+"**Important Note:** Unless the model you're using is Davinci, then please "
+"keep the total max num of tokens < 1950 to keep the model from breaking. If "
+"you're using Davinci, please keep max tokens < 3000."
+msgstr "Temp"
+
+#: app.py:90
+msgid "Additional Toggles:"
+msgstr "Temp"
+
+#: app.py:91
+msgid ""
+"Only change these if you want to add specific parameter information to the "
+"model!"
+msgstr "Temp"
+
+#: app.py:92
+msgid "Temperature: "
+msgstr "Temperatura: "
+
+#: app.py:93
+msgid "Top P: "
+msgstr "P Superior: "
+
+#: app.py:97
+msgid "Company Name: "
+msgstr "Nome da Empresa "
+
+#: app.py:98
+msgid "What role are you applying for? "
+msgstr "Cargo para o qual você está aplicando? "
+
+#: app.py:99
+msgid "Who are you emailing? "
+msgstr "Quem vai receber seu e-mail? "
+
+#: app.py:100
+msgid "What is your name? "
+msgstr "Qual é o seu nome? "
+
+#: app.py:101
+msgid "I have experience in..."
+msgstr "Eu tenho experiência em..."
+
+#: app.py:102
+msgid "Job Description..."
+msgstr "Descrição da vaga?"
+
+#: app.py:103
+msgid "I am passionate about..."
+msgstr "Eu tenho interesse em..."
+
+#: app.py:106
+msgid "Submit"
+msgstr "Enviar"
+
+#: app.py:134
+msgid "Auto-Generated Cover Letter"
+msgstr "Carta de Apresentação gerada automáticamente"
+
+#: app.py:136
+msgid "Download Cover Letter"
+msgstr "Baixar Carta de Apresentação"
