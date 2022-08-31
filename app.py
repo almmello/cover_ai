@@ -23,7 +23,7 @@ assert project_id
 parent = f"projects/{project_id}"
 
 # the json credentials stored as env variable
-json_str = os.environ.get('GOOGLE_APPLICATION_CREDENTIALS')
+json_str = os.environ.get('GOOGLE_CREDENTIALS')
 # project name
 # gcp_project = os.environ.get('GCP_PROJECT') 
 
