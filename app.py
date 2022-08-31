@@ -5,8 +5,6 @@ import streamlit as st
 import gettext
 
 from google.cloud import translate
-from google.oauth2 import service_account
-
 
 from os import environ
 
@@ -22,25 +20,9 @@ project_id = environ.get("PROJECT_ID", "")
 assert project_id
 parent = f"projects/{project_id}"
 
-# the json credentials stored as env variable
-json_str = os.environ.get('GOOGLE_CREDENTIALS')
-# project name
-# gcp_project = os.environ.get('GCP_PROJECT') 
-
-# generate json - if there are errors here remove newlines in .env
-json_data = json.loads(json_str)
-# the private_key needs to replace n parsed as string literal with escaped newlines
-json_data['private_key'] = json_data['private_key'].replace('\n', 'n')
-
-# use service_account to generate credentials object
-credentials = service_account.Credentials.from_service_account_info(json_data)
-
-
-
-
 
 def text_translate (sample_text, target_language):
-    client = translate.TranslationServiceClient(credentials=credentials)
+    client = translate.TranslationServiceClient()
     response = client.translate_text(
         contents=[sample_text],
         target_language_code=target_language,

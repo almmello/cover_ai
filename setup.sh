@@ -9,3 +9,4 @@ headless = true\n\
 enableCORS=false\n\
 port = $PORT\n\
 " > ~/.streamlit/config.toml
+echo $GOOGLE_CREDENTIALS | base64 --decode > google-credentials.json
