@@ -37,9 +37,12 @@ language = st.sidebar.selectbox('', ['en', 'pt'], index=1)
 try:
   localizator = gettext.translation('base', localedir='locales', languages=[language])
   localizator.install()
-  _ = localizator.gettext 
-except:
-    pass
+  _ = localizator.gettext
+  print("Localization changed sucessifuly")
+except Exception as e:
+  print("Localization Error")
+  print(e)
+  pass
 
 #print("** Loading API Key")
 ai.api_key = os.getenv("OPENAI_API_KEY")
@@ -134,6 +137,8 @@ if submit_button:
 
     #st.subheader("Cover Letter Prompt")
     #st.write(prompt)
+    st.subheader(_("Auto-Generated Cover Letter"))
+    st.write(text)
     st.subheader(_("Auto-Generated Cover Letter"))
     st.write(translated_text)
     st.download_button(label=_('Download Cover Letter'), file_name='cover_letter.txt', data=text)
