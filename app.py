@@ -33,7 +33,7 @@ def text_translate (sample_text, target_language):
     for translation in response.translations:
         return translation.translated_text
 
-language = st.sidebar.selectbox('', ['en', 'pt'])
+language = st.sidebar.selectbox('', ['en', 'pt'], index=1)
 try:
   localizator = gettext.translation('base', localedir='locales', languages=[language])
   localizator.install()
