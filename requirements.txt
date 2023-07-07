@@ -9,7 +9,7 @@ beautifulsoup4==4.11.1
 bleach==5.0.1
 blinker==1.5
 cachetools==5.2.0
-certifi==2022.6.15
+certifi
 cffi==1.15.1
 charset-normalizer==2.1.0
 click==8.1.3
@@ -23,7 +23,7 @@ executing==0.9.1
 fastjsonschema==2.16.1
 git-ignore==1.0.2
 gitdb==4.0.9
-GitPython==3.1.27
+GitPython
 google-api-core
 google-auth==2.10.0
 google-cloud-core==2.3.2
@@ -34,14 +34,14 @@ grpcio-status
 idna==3.3
 importlib-metadata==4.12.0
 ipykernel==6.15.1
-ipython==8.4.0
+ipython
 ipython-genutils==0.2.0
 ipywidgets==7.7.1
 jedi==0.18.1
 Jinja2==3.1.2
 jsonschema==4.9.1
 jupyter-client==7.3.4
-jupyter-core==4.11.1
+jupyter-core
 jupyterlab-pygments==0.2.2
 jupyterlab-widgets==1.1.1
 lxml==4.9.1
@@ -63,11 +63,11 @@ pandocfilters==1.5.0
 parso==0.8.3
 pexpect==4.8.0
 pickleshare==0.7.5
-Pillow==9.2.0
+Pillow
 prometheus-client==0.14.1
 prompt-toolkit==3.0.30
 proto-plus==1.22.0
-protobuf==3.20.1
+protobuf
 psutil==5.9.1
 ptyprocess==0.7.0
 pure-eval==0.2.2
@@ -86,7 +86,7 @@ python-gettext==4.0
 pytz==2022.2
 pytz-deprecation-shim==0.1.0.post0
 pyzmq==23.2.1
-requests==2.28.1
+requests
 rich==12.5.1
 rsa==4.9
 semver==2.13.0
@@ -100,7 +100,7 @@ terminado==0.15.0
 tinycss2==1.1.1
 toml==0.10.2
 toolz==0.12.0
-tornado==6.2
+tornado
 tqdm==4.64.0
 traitlets==5.3.0
 types-pytz==2022.1.2
